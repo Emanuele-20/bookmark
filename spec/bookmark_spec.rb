@@ -15,7 +15,7 @@ describe Bookmark do
 
       expect(bookmarks.length).to eq 3
       expect(bookmarks.first).to be_an Bookmark
-      expect(bookmarks.first.id).to eq Bookmark.id
+      expect(bookmarks.first.id.to_i).to be_a_kind_of Integer
       expect(bookmarks.first.title).to eq "Makers Academy"
       expect(bookmarks.first.url).to eq "http://www.makersacademy.com"
     end
@@ -24,7 +24,7 @@ describe Bookmark do
   describe  '.create' do
     it 'add new url' do
       bookmark = Bookmark.create(url: 'http://www.testbookmark.com', title: 'Test Bookmark')
-      persisted_data = persisted_data(id: bookmark.id)
+      persisted_data = PG.connect(dbname: 'bookmark_manager_test').query("SELECT * FROM bookmarks WHERE id = #{bookmark.id};")
 
       expect(bookmark).to be_a Bookmark
       expect(bookmark.id).to eq persisted_data.first['id']
