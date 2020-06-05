@@ -5,7 +5,13 @@
     <li>
       <a  href="<%= bookmark.url %>">
         <%= bookmark.title %>
+      <br>
       </a>
+      <form action="/bookmarks/<%= bookmark.id %>" method="post">
+      <input type='hidden' name='_method' value='DELETE'/>
+      <input type="submit" value="Delete" />
+    </form>
+      <br>
     </li>
   <% end %>
 </ul>
