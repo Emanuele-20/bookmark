@@ -41,12 +41,8 @@ First lets create a directory for the database setup called db, and a sub-direct
 1. - db/
 2.   - migrations/
 3. 01_create_bookmarks_table.sql
+4. 02_add_title_to_bookmarks.sql
 
-# Stories n.3
-
-* As a time-pressed user
-* So that I can quickly go to web sites I regularly visit
-* I would like to see a list of bookmarks
 
 
 Follow these steps to set up the bookmarks_manager database:
